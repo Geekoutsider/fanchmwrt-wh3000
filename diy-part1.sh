@@ -16,3 +16,5 @@
 # Add a feed source
 #echo 'src-git helloworld https://github.com/fw876/helloworld' >>feeds.conf.default
 #echo 'src-git passwall https://github.com/xiaorouji/openwrt-passwall' >>feeds.conf.default
+# 强制禁用 rrdns（避免 luci 隐式 select）
+sed -i 's/CONFIG_PACKAGE_rpcd-mod-rrdns=y/# CONFIG_PACKAGE_rpcd-mod-rrdns is not set/' .config
