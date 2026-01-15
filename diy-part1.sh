@@ -1,29 +1,11 @@
 #!/bin/bash
 #
-# https://github.com/P3TERX/Actions-OpenWrt
-# File name: diy-part1.sh
-# Description: OpenWrt DIY script part 1 (Before Update feeds)
-#
-# Copyright (c) 2019-2024 P3TERX <https://p3terx.com>
-#
-# This is free software, licensed under the MIT License.
-# See /LICENSE for more information.
+# OpenWrt DIY script part 1 (Before Update feeds)
 #
 
-# Uncomment a feed source
-#sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
-
-# Add a feed source
-#echo 'src-git helloworld https://github.com/fw876/helloworld' >>feeds.conf.default
-#echo 'src-git passwall https://github.com/xiaorouji/openwrt-passwall' >>feeds.conf.default
-# 强制禁用 rrdns（避免 luci 隐式 select）
-sed -i 's/CONFIG_PACKAGE_rpcd-mod-rrdns=y/# CONFIG_PACKAGE_rpcd-mod-rrdns is not set/' .config
-#!/bin/bash
 set -e
 
-if [ -f .config ]; then
-  echo ">>> .config exists, disabling rpcd-mod-rrdns"
-  sed -i 's/CONFIG_PACKAGE_rpcd-mod-rrdns=y/# CONFIG_PACKAGE_rpcd-mod-rrdns is not set/' .config
-else
-  echo ">>> .config not found, skip rpcd-mod-rrdns patch"
-fi
+# 这里只做 feeds / patch 相关操作
+# 不要碰 .config
+
+echo ">>> diy-part1.sh done"
