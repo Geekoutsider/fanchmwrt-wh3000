@@ -53,7 +53,6 @@ jobs:
         src-git routing https://github.com/openwrt/routing.git
         src-git telephony https://github.com/openwrt/telephony.git
         src-git fanchmwrt https://github.com/fanchmwrt/fanchmwrt-packages.git
-        src-git helloworld https://github.com/fw876/helloworld.git
         EOF
 
         chmod +x $DIY_P1_SH
