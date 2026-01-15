@@ -18,3 +18,12 @@
 #echo 'src-git passwall https://github.com/xiaorouji/openwrt-passwall' >>feeds.conf.default
 # 强制禁用 rrdns（避免 luci 隐式 select）
 sed -i 's/CONFIG_PACKAGE_rpcd-mod-rrdns=y/# CONFIG_PACKAGE_rpcd-mod-rrdns is not set/' .config
+#!/bin/bash
+set -e
+
+if [ -f .config ]; then
+  echo ">>> .config exists, disabling rpcd-mod-rrdns"
+  sed -i 's/CONFIG_PACKAGE_rpcd-mod-rrdns=y/# CONFIG_PACKAGE_rpcd-mod-rrdns is not set/' .config
+else
+  echo ">>> .config not found, skip rpcd-mod-rrdns patch"
+fi
